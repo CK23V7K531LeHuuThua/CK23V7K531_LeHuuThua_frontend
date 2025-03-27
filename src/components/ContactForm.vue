@@ -36,7 +36,7 @@
             <button v-if="contactLocal._id" type="button" class="ml-2 btn btn-danger" @click="deleteContact">
                 Xóa
             </button>
-            <button type="button" class="ml-2 btn btn-danger" @click="Cancel">
+            <button v-if="showCancel" type="button" class="ml-2 btn btn-danger" @click="Cancel">
                 Thoát
             </button>
         </div>
@@ -53,7 +53,8 @@ export default {
     },
     emits: ["submit:contact", "delete:contact"],
     props: {
-        contact: { type: Object, required: true }
+        contact: { type: Object, required: true },
+        showCancel: { type: Boolean, default: true }
     },
     data() {
         const contactFormSchema = yup.object().shape({
